@@ -116,4 +116,12 @@ public class testGOF {
 
         assertEquals(cellInstance, 0);
     }
+
+    @Test
+    public void countOfNeighboursForLastCell2() {
+        int[][] temp = {{0,0,0,0,0},{0,0,1,1,0},{0,1,1,0,0},{0,0,1,1,0},{0,1,1,0,0}};
+        int count = Cell.getCountOfLiveNeighbours(Cell.getCellNeighboursArray(temp,1, 2));
+        assertEquals(count, 3);
+    }
+
 }

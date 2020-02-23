@@ -25,11 +25,19 @@ public class Grid {
         return str;
     }
 
+    public static int[][] nextGeneration(int[][] grid) {
+        int[][] tmp = new int[grid.length][grid.length];
+        for (int i = 0; i < gridSize; i++) {
+            for (int j = 0; j < gridSize; j++) {
+                tmp[i][j] = Cell.cellTheNextDay(grid, i, j);
+            }
+        }
+        return tmp;
+    }
+
     public static void main(String args[]) {
         int[][] world = initWorld(gridSize);
-        int[][] nextDayWorld = initWorld(gridSize);
-
-        int daysOfLife = 3;
+        int daysOfLife = 10;
 
         //add live cells
         world[1][2] = 1;
@@ -46,18 +54,12 @@ public class Grid {
 
         for(int d=0; d<daysOfLife; d++) {
 
-            for (int i = 0; i < gridSize; i++) {
-                for (int j = 0; j < gridSize; j++) {
-                    nextDayWorld[i][j] = Cell.cellTheNextDay(world, i, j);
-                }
-            }
-            world = nextDayWorld;
+            world = nextGeneration(world);
 
             for(int i=0; i<gridSize; i++) {
                 System.out.println(arrayToString(world[i]));
             }
             System.out.println("_____");
-
         }
 
 

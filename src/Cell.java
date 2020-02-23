@@ -37,6 +37,9 @@ public class Cell {
 
     public static int cellTheNextDay(int[][] grid, int x, int y) {
         int liveNeighbours = getCountOfLiveNeighbours(getCellNeighboursArray(grid, x, y));
+        /*if(x==1&&y==2) {
+            System.out.println(liveNeighbours);
+        }*/
         if(grid[x][y]==1) {
             if (liveNeighbours < 2 || liveNeighbours > 3) {
                 return 0;
@@ -48,6 +51,8 @@ public class Cell {
         else {
             if (liveNeighbours == 3) {
                 return 1;
+            } else {
+                return 0;
             }
         }
         return 0;
